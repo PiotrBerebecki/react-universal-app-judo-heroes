@@ -5,7 +5,7 @@ import { Server } from 'http';
 import Express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter as Router } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom';
 import { App } from './components/App';
 
 const app = new Express();
@@ -26,9 +26,9 @@ app.get('*', (req, res) => {
   if (process.env.UNIVERSAL) {
     const context = {};
     markup = renderToString(
-      <Router location={req.url} context={context}>
+      <StaticRouter location={req.url} context={context}>
         <App />
-      </Router>,
+      </StaticRouter>
     );
 
     // context.url will contain the URL to redirect to if a <Redirect> was used
@@ -47,7 +47,7 @@ app.get('*', (req, res) => {
 // start the server
 const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'production';
-server.listen(port, (err) => {
+server.listen(port, err => {
   if (err) {
     return console.error(err);
   }
@@ -55,5 +55,6 @@ server.listen(port, (err) => {
     `
       Server running on http://localhost:${port} [${env}]
       Universal rendering: ${process.env.UNIVERSAL ? 'enabled' : 'disabled'}
-    `);
+    `
+  );
 });

@@ -6,7 +6,7 @@ export const medalTypes = {
   B: 'Bronze',
 };
 
-export const Medal = props => (
+export const Medal = props =>
   <li className="medal">
     <span
       className={`symbol symbol-${props.type}`}
@@ -18,7 +18,6 @@ export const Medal = props => (
     <span className="city"> {props.city}</span>
     <span className="event"> ({props.event})</span>
     <span className="category"> {props.category}</span>
-  </li>
-);
+  </li>;
 
 export default Medal;

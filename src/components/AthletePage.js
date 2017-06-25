@@ -12,7 +12,10 @@ export const AthletePage = ({ athlete, athletes }) => {
       <div className="athlete">
         <header style={headerStyle} />
         <div className="picture-container">
-          <img alt={`${athlete.name}'s profile`} src={`/img/${athlete.image}`} />
+          <img
+            alt={`${athlete.name}'s profile`}
+            src={`/img/${athlete.image}`}
+          />
           <h2 className="name">{athlete.name}</h2>
         </div>
         <section className="description">
@@ -23,9 +26,9 @@ export const AthletePage = ({ athlete, athletes }) => {
         </section>
         <section className="medals">
           <p>Winner of <strong>{athlete.medals.length}</strong> medals:</p>
-          <ul>{
-            athlete.medals.map(medal => <Medal key={medal.id} {...medal} />)
-          }</ul>
+          <ul>
+            {athlete.medals.map(medal => <Medal key={medal.id} {...medal} />)}
+          </ul>
         </section>
       </div>
       <div className="navigateBack">
